@@ -11,9 +11,17 @@ on:
     #        │ │ │ │ ┌────── day (week)
     - cron: '0 0 1 * *'
   
+concurrency:
+  group: ${{ github.workflow }}
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+  
 jobs:
   'create-report':
     runs-on: ubuntu-latest
+    timeout-minutes: 15
     steps:
       # 获得统计的开始时间（上个月的第一天）
       - uses: actions/github-script@v6
