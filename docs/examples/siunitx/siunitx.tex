@@ -3,17 +3,23 @@
 \usepackage{booktabs}
 \usepackage{siunitx}
 
+% siunitx v3 全局配置
+\sisetup{
+    round-mode = places,
+    round-precision = 3,
+    group-separator = {,} % 千位分隔逗号，可选
+}
+
 \begin{document}
 
+% 货币不使用 \SI，直接写；\SI 用于物理量+单位
 This thing costs \SI{123456}{\$}.
 There are \num{987654} people in this room, \SI{38}{\percent} of which are male.
 
 \vspace{1cm}
 
 \sisetup{
-    round-mode = places,
-    round-precision = 3
-}%
+
 You can also round numbers, for example \num{1.23456}.
 
 \vspace{1cm}
