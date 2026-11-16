@@ -15,11 +15,17 @@ on:
     inputs:
       fromdate:
         description: 'Optional interval start date (format: yyyy-mm-dd)'
-        required: false # Skipped if workflow dispatch input is not provided
+        required: false 
       todate:
         description: 'Optional interval end date (format: yyyy-mm-dd)'
-        required: false # Skipped if workflow dispatch input is not provided
+        required: false 
 
+concurrency:
+  group: ${{ github.workflow }}
+  cancel-in-progress: true
+
+permissions:
+  contents: read
 
 jobs:
   org-repo-metrics-report:
