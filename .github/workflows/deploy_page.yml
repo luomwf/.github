@@ -7,13 +7,12 @@ on:
   workflow_dispatch:
 
 concurrency:
-  group: pages
+  group: ${{ github.workflow }}-${{github.ref }}
   cancel-in-progress: true
 
 permissions:
   contents: write
   pages: write
-  id-token: write
 
 jobs:
   build:
